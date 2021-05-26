@@ -81,7 +81,7 @@ const Homepage = () => {
       <header>
         {text}
         <span className="intersecting">
-          intersecting: {intersecting ? 'true' : 'false'}
+          intersecting the viewport: {intersecting ? 'true' : 'false'}
         </span>
       </header>
       <div className="red1">red 1</div>
