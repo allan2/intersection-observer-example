@@ -1,0 +1,33 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  height: 100px;
+  background: pink;
+  position: sticky;
+  top: 0;
+}
+
+.intersecting {
+  margin-left: 100px;
+}
+
+.red1 {
+  height: 1200px;
+  background: red;
+}
+
+.green2 {
+  height: 900px;
+  background: green;
+}
+
+.blue3 {
+  height: 1500px;
+  background: blue;
+}
