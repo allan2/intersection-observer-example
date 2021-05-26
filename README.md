@@ -1,4 +1,4 @@
-# react-intersectino-observer-example
+# react-intersection-observer-example
 
 
 [Code Sandbox here](https://rm638.sse.codesandbox.io/)
