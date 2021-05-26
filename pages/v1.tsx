@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-// this works in most bnr
+// first observer is on the top sentinel.
+// second observer is on the target itself.
+// when the first is not intersecting and the second is, we win.
 const HomepageV1 = () => {
   const ref1 = useRef<HTMLDivElement>(null)
   const ref2 = useRef<HTMLDivElement>(null)
