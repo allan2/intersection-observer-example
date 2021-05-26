@@ -13,7 +13,7 @@ header {
   top: 0;
 }
 
-.intersecting {
+.label {
   margin-left: 100px;
 }
 
@@ -28,6 +28,6 @@ header {
 }
 
 .blue3 {
-  height: 1500px;
+  height: 1700px;
   background: blue;
 }

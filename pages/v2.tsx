@@ -1,35 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-interface IntersectionObserverInitV2 extends IntersectionObserverInit {
-  trackVisibility?: boolean
-  delay?: number
-}
-
-interface IntersectionObserverV2 extends IntersectionObserver {
-  readonly trackVisibility: boolean
-  readonly delay: number
-  takeRecords(): IntersectionObserverEntryV2[]
-}
-
-interface IntersectionObserverCallbackV2 {
-  (
-    entries: IntersectionObserverEntryV2[],
-    observer: IntersectionObserverV2
-  ): void
-}
-
-declare const IntersectionObserverV2: {
-  prototype: IntersectionObserverV2
-  new (
-    callback: IntersectionObserverCallbackV2,
-    options?: IntersectionObserverInitV2
-  ): IntersectionObserverV2
-}
-
-interface IntersectionObserverEntryV2 extends IntersectionObserverEntry {
-  readonly isVisible: true
-}
-
+// this works in Chrome only
 const HomepageV2 = () => {
   const ref = useRef<HTMLDivElement>(null)
   const [text, setText] = useState('')
@@ -37,7 +8,7 @@ const HomepageV2 = () => {
   const [visible, setVisible] = useState(false)
 
   // memoized
-  const callback = useCallback<IntersectionObserverCallbackV2>(
+  const callback = useCallback<IntersectionObserverCallback>(
     (entries): void => {
       const [e] = entries // there's only one
 
@@ -63,14 +34,16 @@ const HomepageV2 = () => {
   )
 
   useEffect(() => {
-    const observer = new IntersectionObserverV2(callback, {
-      root: document.getElementsByTagName('header')[0],
+    const observer = new IntersectionObserver(callback, {
+      //root: document.getElementsByTagName('header')[0],
       rootMargin:
         typeof document !== 'undefined'
           ? `${
               document.getElementsByTagName('header')[0].clientHeight * -1
             }px 0px 0px 0px`
           : '0px',
+      trackVisibility: true,
+      delay: 100,
     })
 
     const refCurr = ref.current
@@ -94,9 +67,10 @@ const HomepageV2 = () => {
     <div className="container">
       <header>
         {text}
-        <span className="intersecting">
+        <span className="label">
           intersecting the viewport: {intersecting ? 'true' : 'false'}
         </span>
+        <span className="label">visible: {visible ? 'true' : 'false'}</span>
       </header>
       <div className="red1">red 1</div>
       <div ref={ref} className="green2">
