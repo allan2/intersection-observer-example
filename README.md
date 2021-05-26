@@ -5,4 +5,5 @@
 
 This is an example to show a target div intersecting with a sticky header.
 
-There is still an issue on entering.
+The green div is the target. Scrolling past it into blue and going up is fine.
+The issue is that scrolling into it doesn't update after it has intersected the viewport.
