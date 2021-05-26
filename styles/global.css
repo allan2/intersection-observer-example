@@ -31,3 +31,7 @@ header {
   height: 1700px;
   background: blue;
 }
+
+.sentinel {
+  visibility: hidden;
+}

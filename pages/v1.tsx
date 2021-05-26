@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-// first observer is on the top sentinel.
+// first observer is on the top sentinel. It can be an empty div. Visibility can be hidden but display cannot be none.
 // second observer is on the target itself.
 // when the first is not intersecting and the second is, we win.
 const HomepageV1 = () => {
@@ -92,16 +92,17 @@ const HomepageV1 = () => {
           {intersecting1 ? 'true' : 'false'}
         </span>
         <span className="label">
-          sentinel 2 intersecting the viewport:{' '}
-          {intersecting2 ? 'true' : 'false'}
+          target intersecting the viewport: {intersecting2 ? 'true' : 'false'}
         </span>
       </header>
       <div className="red1">red 1</div>
-      <div ref={ref1}>sentinel 1</div>
+      <div ref={ref1} className="sentinel">
+        Sentinel 1
+      </div>
       <div ref={ref2} className="green2">
         green 2
       </div>
-      <div>sentinel 2</div>
+      <div>Sentinel 2 (this does nothing)</div>
       <div className="blue3">blue 3</div>
     </div>
   )
